@@ -30,7 +30,7 @@ class ProfilePostsItemSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Posts
-        fields = ('id', 'title', 'description','image','tag','user_id')
+        fields = ('id', 'title', 'description','image','tag',)
         extra_kwargs = {'user_profile': {'read_only': True}}
 
 
@@ -41,4 +41,4 @@ class ProfileTagsItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.tags
         fields = ('id', 'tag')
-        extra_kwargs = {'user_profile': {'read_only': True}}
+        #extra_kwargs = {'user_profile': {'read_only': True}}

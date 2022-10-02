@@ -34,6 +34,7 @@ class userloginapiview(ObtainAuthToken):
 
     renderer_classes = api_settings.DEFAULT_RENDERER_CLASSES
 
+#model view set bydeny al list create update 
 
 class UserProfileTagsViewSet(viewsets.ModelViewSet):
     """Handles creating, reading and updating profile feed items"""
@@ -41,24 +42,25 @@ class UserProfileTagsViewSet(viewsets.ModelViewSet):
     serializer_class = serializer.ProfileTagsItemSerializer
 
     queryset = models.tags.objects.all()
+
     permission_classes = (
-        permissions.updateownprofile,
+        #permissions.updateownprofile,
         IsAuthenticated
     )
 
-    def perform_create(self, serializer):
-        """Sets the user profile to the logged in user"""
-        serializer.save(user_profile=self.request.user)
+    # def perform_create(self, serializer):
+    #     """Sets the user profile to the logged in user"""
+    #     serializer.save(user_profile=self.request.user)
        
 
-    def update(self, request, pk=None):
-        """Handle and updating object"""
-        return Response({'http_method': 'PUT'})
+    # def update(self, request, pk=None):
+    #     """Handle and updating object"""
+    #     return Response({'http_method': 'PUT'})
 
 
-    def destroy(self, request, pk=None):
-        """handling destroy the object"""
-        return Response({'http_method': 'Delete'})
+    # def destroy(self, request, pk=None):
+    #     """handling destroy the object"""
+    #     return Response({'http_method': 'Delete'})
     
 
 class UserProfilePostsViewSet(viewsets.ModelViewSet):
@@ -75,19 +77,20 @@ class UserProfilePostsViewSet(viewsets.ModelViewSet):
         """Sets the user profile to the logged in user"""
         serializer.save(user_profile=self.request.user)
     
+    # 34an al override kdh lw ana sbt ali t7t dol uncommented 
     
-    def retrieve(self, request, pk=None):
-        """handle getting an object by its id """
-        return Response({'http_method': 'GET'})
+    # def retrieve(self, request, pk=None):
+    #     """handle getting an object by its id """
+    #     return Response({'http_method': 'GET'})
 
-    def update(self, request, pk=None):
-        """Handle and updating object"""
-        return Response({'http_method': 'PUT'})
+    # def update(self, request, pk=None):
+    #     """Handle and updating object"""
+    #     return Response({'http_method': 'PUT'})
 
-    def partial_update(self, request, pk=None):
-        """handling partial update for the object"""
-        return Response({'http_method': 'Patch'})
+    # def partial_update(self, request, pk=None):
+    #     """handling partial update for the object"""
+    #     return Response({'http_method': 'Patch'})
 
-    def destroy(self, request, pk=None):
-        """handling destroy the object"""
-        return Response({'http_method': 'Delete'})
+    # def destroy(self, request, pk=None):
+    #     """handling destroy the object"""
+    #     return Response({'http_method': 'Delete'})

@@ -61,16 +61,15 @@ class tags(models.Model):
         """return string represent the tag"""
         return self.tag
 
-
+#al tags mn al end user a7na daifnha zyada bs f al api brdo 7sb al case 
 class Posts(models.Model):
     """ blogs' content """
     user_profile = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
+        UserProfile,
         on_delete=models.CASCADE
     )
     title = models.CharField(max_length=255)
     description = models.CharField(max_length=15000)
     image = models.ImageField(upload_to='images')
     tag=models.CharField(max_length=30)
-    user_id = UserProfile()
     created_on = models.DateTimeField(auto_now_add=True)
