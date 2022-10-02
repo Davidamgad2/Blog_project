@@ -46,30 +46,31 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         """return string represent of our user"""
         return self.email
-        
+
     def get_id(self):
         current_user = self.user
 
         return current_user.id
 
-class tags():
+
+class tags(models.Model):
     """tags for blogs"""
-    tag=models.CharField(max_length=255)
+    tag = models.CharField(max_length=255)
 
     def __str__(self):
         """return string represent the tag"""
         return self.tag
 
 
-class Posts():
+class Posts(models.Model):
     """ blogs' content """
     user_profile = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE
     )
-    title=models.CharField(max_length=255)
+    title = models.CharField(max_length=255)
     description = models.CharField(max_length=15000)
-    image=models.ImageField(upload_to='images')
-    tag=tags()
-    user_id=UserProfile()
+    image = models.ImageField(upload_to='images')
+    tag=models.CharField(max_length=30)
+    user_id = UserProfile()
     created_on = models.DateTimeField(auto_now_add=True)
