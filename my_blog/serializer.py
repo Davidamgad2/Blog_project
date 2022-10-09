@@ -2,6 +2,7 @@ from unittest.util import _MAX_LENGTH
 from rest_framework import serializers
 #from challenges import models
 from . import models
+from django.contrib.auth.models import User
 
 class UserProfileSerializer(serializers.ModelSerializer):
     """serializes a user profile object """
@@ -42,3 +43,12 @@ class ProfileTagsItemSerializer(serializers.ModelSerializer):
         model = models.tags
         fields = ('id', 'tag')
         #extra_kwargs = {'user_profile': {'read_only': True}}
+
+class ChangePasswordSerializer(serializers.Serializer):
+    model = User
+
+    """
+    Serializer for password change endpoint.
+    """
+    old_password = serializers.CharField(required=True)
+    new_password = serializers.CharField(required=True)

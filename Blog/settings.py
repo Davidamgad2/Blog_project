@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'my_blog',
     'rest_framework',
     'rest_framework.authtoken',
+    'django_rest_passwordreset',
+    
 ]
 
 MIDDLEWARE = [
@@ -122,6 +124,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 AUTH_USER_MODEL='my_blog.UserProfile'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 STATICFILES_DIRS=[
 
 ]
